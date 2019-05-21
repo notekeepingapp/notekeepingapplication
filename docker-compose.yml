@@ -1,0 +1,27 @@
+version: '3'
+services:
+  service1:
+    build: ./
+    tty: true
+  service2:
+    build: ./
+    tty: true
+  service3:
+    build: ./
+    tty: true
+
+  springapp:
+    build: ./Nginx
+    tty: true
+    links:
+      - service1
+      - service2
+      - service3
+    ports:
+      - '1235:1235'
+
+  reactapp:
+    image: note-keeping-app-ui
+    tty: true
+    ports:
+    - '5052:5052'
