@@ -14,8 +14,6 @@ public class LoginService {
     UserRepository userRepository;
 
     public boolean isValidCredentials(User user) {
-        System.out.println(user.getPassword());
-        System.out.println(getUserPasswordFromDB(user));
         return user.getPassword().equals(getUserPasswordFromDB(user));
     }
 
@@ -28,7 +26,6 @@ public class LoginService {
 
     public boolean isUserRegistered(User user) {
         List<User> users = userRepository.findByUsername(user.getUsername());
-        System.out.println((users.size()));
         return users.size() != 0;
     }
 }
