@@ -23,7 +23,7 @@ public class NoteController {
     }
 
     @PostMapping("/list-notes/{name}")
-    public ResponseEntity<Note> addNote(@PathVariable String name, @RequestBody Note note) {
+    public ResponseEntity<Boolean> addNote(@PathVariable String name, @RequestBody Note note) {
         note.setUser(name);
         return new ResponseEntity<>(noteService.addNote(note), HttpStatus.OK);
     }
@@ -32,16 +32,15 @@ public class NoteController {
     public ResponseEntity updateNote(@PathVariable String name, @PathVariable int id, @RequestBody Note note) {
         note.setId(id);
         note.setUser(name);
-        noteService.updateNote(note);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(noteService.updateNote(note), HttpStatus.OK);
     }
 
-    @DeleteMapping("/list-notes/{name}/{id}")
-    public void deleteNote(@PathVariable int id) {
+    @RequestMapping(value = "/list-notes/{name}/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity deleteNote(@PathVariable int id) {
         if ((noteService.isNoteExists(id))) {
-            noteService.deleteNote(id);
+            return new ResponseEntity<>(noteService.deleteNote(id), HttpStatus.OK);
         } else {
-            throw new NoteNotFoundException("id-" + id);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 }
