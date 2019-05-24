@@ -20,7 +20,7 @@ public class LoginController {
     LoginService loginService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> validateUserLogin(@RequestBody User user) {
+    public ResponseEntity<Boolean> saveUser(@RequestBody User user) {
         if (loginService.isUserRegistered(user)) {
             if (loginService.isValidCredentials(user))
                 return new ResponseEntity<>(true, HttpStatus.OK);
