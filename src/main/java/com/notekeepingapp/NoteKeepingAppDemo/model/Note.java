@@ -15,16 +15,17 @@ public class Note {
     @Size(min = 2)
     private String user;
 
-    @Size(min = 2)
+    @Size(min = 1)
     private String noteTitle;
 
-    @Size(min = 10)
+    @Size(min = 1)
     private String noteContent;
 
     private Date createdAt;
 
     public Note() {
     }
+
 
     public Note(int id, String user, String noteTitle, String noteContent, Date createdAt) {
         this.id = id;

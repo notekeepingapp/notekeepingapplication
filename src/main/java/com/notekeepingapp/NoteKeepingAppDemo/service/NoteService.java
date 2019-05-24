@@ -17,18 +17,20 @@ public class NoteService {
         return noteRepository.findNoteByUser(user);
     }
 
-    public Note addNote(Note note) {
+    public boolean addNote(Note note) {
         noteRepository.save(note);
-        return note;
+        return true;
     }
 
-    public void deleteNote(int id) {
+    public boolean deleteNote(int id) {
         noteRepository.deleteById(id);
+        return true;
     }
 
-    public void updateNote(Note note) {
+    public boolean updateNote(Note note) {
         noteRepository.updatenoteTitle(note.getId(), note.getNoteTitle());
         noteRepository.updatenoteContent(note.getId(), note.getNoteContent());
+        return true;
     }
 
     public boolean isNoteExists(int id) {
