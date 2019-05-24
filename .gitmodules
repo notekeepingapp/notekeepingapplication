@@ -1,0 +1,3 @@
+[submodule "reactapp"]
+	path = reactapp
+	url = https://github.com/notekeepingapp/noteappui.git
