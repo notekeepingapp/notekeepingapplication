@@ -1,27 +1,44 @@
 version: '3'
 services:
   service1:
-    build: ./
-    tty: true
+    build: springapp
+    ports:
+      - 1234
+    networks:
+      - noteapp_network
   service2:
-    build: ./
-    tty: true
+    build: springapp
+    ports:
+      - 1234
+    networks:
+      - noteapp_network
   service3:
-    build: ./
-    tty: true
+    build: springapp
+    ports:
+      - 1234
+    networks:
+      - noteapp_network
 
   springapp:
-    build: ./Nginx
-    tty: true
+    build: Nginx
     links:
       - service1
       - service2
       - service3
     ports:
-      - '1235:1235'
+      - '1234:1234'
+    networks:
+      - noteapp_network
 
   reactapp:
-    image: note-keeping-app-ui
-    tty: true
+    build: reactapp
     ports:
-    - '5052:5052'
+    - '3000:3000'
+    depends_on:
+      - springapp
+    networks:
+      - noteapp_network
+
+networks:
+  noteapp_network:
+    driver: bridge
