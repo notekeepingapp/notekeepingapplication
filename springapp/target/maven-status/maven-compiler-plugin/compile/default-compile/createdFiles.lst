@@ -8,4 +8,3 @@ com\notekeepingapp\NoteKeepingAppDemo\controller\LoginController.class
 com\notekeepingapp\NoteKeepingAppDemo\NoteKeepingAppDemoApplication.class
 com\notekeepingapp\NoteKeepingAppDemo\model\User.class
 com\notekeepingapp\NoteKeepingAppDemo\model\Note.class
-com\notekeepingapp\NoteKeepingAppDemo\WebConfig.class

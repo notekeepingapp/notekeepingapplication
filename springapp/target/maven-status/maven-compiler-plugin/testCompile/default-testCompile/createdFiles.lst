@@ -1,5 +1,5 @@
+com\notekeepingapp\NoteKeepingAppDemo\controller\LoginControllerTest.class
 com\notekeepingapp\NoteKeepingAppDemo\service\LoginService.class
-com\notekeepingapp\NoteKeepingAppDemo\controller\LoginController.class
 com\notekeepingapp\NoteKeepingAppDemo\controller\NoteControllerTest.class
 com\notekeepingapp\NoteKeepingAppDemo\DAO\UserRepository.class
 com\notekeepingapp\NoteKeepingAppDemo\NoteKeepingAppDemoApplicationTests.class
