@@ -11,6 +11,7 @@ import java.util.Date;
 @Table(name = "notes")
 public class Note {
 
+    @TableGenerator(name = "Note",initialValue = 1)
     @Column(name = "noteId", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,6 +36,9 @@ public class Note {
     public Note() {
     }
 
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public Note(int id, String user, String noteTitle, String noteContent, Date createdAt) {
         this.id = id;

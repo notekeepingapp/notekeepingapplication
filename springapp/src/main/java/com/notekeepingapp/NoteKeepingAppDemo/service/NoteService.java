@@ -17,9 +17,8 @@ public class NoteService {
         return noteRepository.findNoteByUser(user);
     }
 
-    public boolean addNote(Note note) {
-        noteRepository.save(note);
-        return true;
+    public Note addNote(Note note) {
+        return noteRepository.save(note);
     }
 
     public boolean deleteNote(int id) {

@@ -21,9 +21,9 @@ public class UserController {
     @Autowired
     LoginService loginService;
 
-    @GetMapping("/all")
-    public Iterable<User> getUsers(){
-        return userRepository.findAll();
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public ResponseEntity<Iterable<User>> getUsers(){
+        return new ResponseEntity<>(userRepository.findAll(),HttpStatus.OK);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
