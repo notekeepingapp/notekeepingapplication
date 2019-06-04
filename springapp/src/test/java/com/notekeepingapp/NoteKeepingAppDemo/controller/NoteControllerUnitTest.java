@@ -70,4 +70,6 @@ public class NoteControllerTest {
 //        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.delete("/Anju/notes/",1)).andReturn();
 //        assertEquals(200, result.getResponse().getStatus());
 //    }
+
+    //For delete note there should also be test for false case as well
 }

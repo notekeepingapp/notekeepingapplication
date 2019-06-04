@@ -18,14 +18,14 @@ public class LoginService {
     }
 
     public String getUserPasswordFromDB(User user) {
-        List<User> registeredUser = userRepository.findByUsername(user.getUsername());
+        User registeredUser = userRepository.findByUsername(user.getUsername());
         if (registeredUser != null)
-            return registeredUser.get(0).getPassword();
+            return registeredUser.getPassword();
         return null;
     }
 
     public boolean isUserRegistered(User user) {
-        List<User> users = userRepository.findByUsername(user.getUsername());
-        return users.size() != 0;
+        User userFromDB = userRepository.findByUsername(user.getUsername());
+        return userFromDB != null;
     }
 }

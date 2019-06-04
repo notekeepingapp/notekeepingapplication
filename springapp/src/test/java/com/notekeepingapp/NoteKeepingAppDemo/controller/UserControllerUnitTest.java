@@ -1,6 +1,5 @@
 package com.notekeepingapp.NoteKeepingAppDemo.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.notekeepingapp.NoteKeepingAppDemo.DAO.UserRepository;
@@ -19,8 +18,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.when;
 
 
 @RunWith(SpringRunner.class)
@@ -44,6 +41,8 @@ public class UserControllerTest {
         String uri = "/login";
         boolean isUserRegistered = true;
         String mockUserJSON = ow.writeValueAsString(mockUser);
+//        Mockito.when(loginService.isUserRegistered(Mockito.any(User.class))).thenReturn(true);
+//        Mockito.when(loginService.isValidCredentials(Mockito.any(User.class))).thenReturn(true);
 //        given(loginService.isUserRegistered(mockUser)).willReturn(false);
 //        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post(uri).accept(MediaType.APPLICATION_JSON).content(mockUserJSON).contentType(MediaType.APPLICATION_JSON)).andReturn();
 //        System.out.println(result.getResponse().getStatus());
