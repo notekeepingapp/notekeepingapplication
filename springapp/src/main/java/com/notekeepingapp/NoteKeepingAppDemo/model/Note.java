@@ -1,6 +1,9 @@
 package com.notekeepingapp.NoteKeepingAppDemo.model;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -8,19 +11,25 @@ import java.util.Date;
 @Table(name = "notes")
 public class Note {
 
+    @Column(name = "noteId", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Size(min = 2)
+    @Column(name = "userName")
+    @NotBlank
     private String user;
 
-    @Size(min = 1)
+    @Column(name = "noteTitle")
     private String noteTitle;
 
-    @Size(min = 1)
+    @Column(name = "noteContent")
+    @NotBlank(message = "Enter a Content ")
+    @Size(min = 2)
     private String noteContent;
 
+    @Column(name = "createdAt")
+    @CreatedDate
     private Date createdAt;
 
     public Note() {

@@ -1,17 +1,23 @@
 package com.notekeepingapp.NoteKeepingAppDemo.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
 public class User {
 
+    @Column(name = "userId", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer user_id;
 
+    @Column(name = "UserName")
+    @NotBlank(message = "Enter a user name ")
     private String username;
 
+    @Column(name = "Password")
+    @NotBlank(message = "Enter a Password ")
     private String password;
 
     public User() {

@@ -9,18 +9,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @Controller
 @SessionAttributes("name")
-public class LoginController {
+public class UserController {
 
     @Autowired
     UserRepository userRepository;
     @Autowired
     LoginService loginService;
 
+    @GetMapping("/all")
+    public Iterable<User> getUsers(){
+        return userRepository.findAll();
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> saveUser(@RequestBody User user) {
+    public ResponseEntity<Boolean> saveUser(@Valid @RequestBody User user) {
         if (loginService.isUserRegistered(user)) {
             if (loginService.isValidCredentials(user))
                 return new ResponseEntity<>(true, HttpStatus.OK);

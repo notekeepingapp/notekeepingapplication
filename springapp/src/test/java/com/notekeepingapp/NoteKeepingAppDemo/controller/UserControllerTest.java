@@ -24,8 +24,8 @@ import static org.mockito.Mockito.when;
 
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(value = LoginController.class, secure = false)
-public class LoginControllerTest {
+@WebMvcTest(value = UserController.class, secure = false)
+public class UserControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
