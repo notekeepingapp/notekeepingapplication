@@ -11,7 +11,6 @@ import java.util.Date;
 @Table(name = "notes")
 public class Note {
 
-    @TableGenerator(name = "Note",initialValue = 1)
     @Column(name = "noteId", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

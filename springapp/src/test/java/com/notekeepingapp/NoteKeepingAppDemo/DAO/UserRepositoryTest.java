@@ -4,6 +4,7 @@ import com.notekeepingapp.NoteKeepingAppDemo.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.PropertySource;
@@ -20,6 +21,7 @@ public class UserRepositoryTest {
     @Autowired
     private TestEntityManager entityManager;
 
+    @Qualifier("userRepository")
     @Autowired
     private UserRepository userRepository;
 

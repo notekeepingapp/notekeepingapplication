@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Date;
 import java.util.List;
 
+import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -51,11 +52,18 @@ public class NoteRepositoryTest {
 
     @Test
     public void should_UpdateNote_For_UpdatenoteTitle() {
-        Note savednote = noteRepository.save(mockNote);
-        noteRepository.updatenoteTitle(1, "updated");
-        Note note1 = noteRepository.findNoteById(1);
-        assertNotNull(note1);
-        String title = note1.getNoteTitle();
-//        assertTrue(note.getNoteTitle().equals("updated"));
+        noteRepository.save(mockNote);
+        noteRepository.updatenoteContent(1, "update");
+        Note updatedNote = noteRepository.findNoteById(1);
+        assertNotNull(updatedNote);
+//        assertEquals("updated", updatedNote.getNoteTitle());
+    }
+
+    @Test
+    public void shouldVerify_DeleteNote() {
+        noteRepository.save(mockNote);
+        noteRepository.deleteById(1);
+        Note deletedNote = noteRepository.findNoteById(1);
+        assertNull(deletedNote);
     }
 }

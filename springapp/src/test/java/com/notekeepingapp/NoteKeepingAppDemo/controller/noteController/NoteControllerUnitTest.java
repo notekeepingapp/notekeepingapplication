@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = NoteController.class, secure = false)
-public class NoteControllerTest {
+public class NoteControllerUnitTest {
 
     @Autowired
     MockMvc mockMvc;

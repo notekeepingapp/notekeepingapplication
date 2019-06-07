@@ -1,4 +1,4 @@
-package com.notekeepingapp.NoteKeepingAppDemo.service;
+package com.notekeepingapp.NoteKeepingAppDemo.service.noteservice;
 
 import com.notekeepingapp.NoteKeepingAppDemo.DAO.NoteRepository;
 import com.notekeepingapp.NoteKeepingAppDemo.model.Note;
@@ -7,31 +7,34 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class NoteService {
+@Service("noteService")
+public class NoteServiceImpl implements NoteService {
 
     @Autowired
     NoteRepository noteRepository;
 
+    @Override
     public List<Note> getNotes(String user) {
         return noteRepository.findNoteByUser(user);
     }
 
-    public Note addNote(Note note) {
+    @Override
+    public Note saveNote(Note note) {
         return noteRepository.save(note);
     }
 
-    public boolean deleteNote(int id) {
+    @Override
+    public void deleteNote(int id) {
         noteRepository.deleteById(id);
-        return true;
     }
 
-    public boolean updateNote(Note note) {
+    @Override
+    public void updateNote(Note note) {
         noteRepository.updatenoteTitle(note.getId(), note.getNoteTitle());
         noteRepository.updatenoteContent(note.getId(), note.getNoteContent());
-        return true;
     }
 
+    @Override
     public boolean isNoteExists(int id) {
         return noteRepository.findNoteById(id) != null;
     }

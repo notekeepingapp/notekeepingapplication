@@ -2,6 +2,7 @@ package com.notekeepingapp.NoteKeepingAppDemo.DAO;
 
 import com.notekeepingapp.NoteKeepingAppDemo.model.Note;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface NoteRepository extends CrudRepository<Note, Integer> {
+public interface NoteRepository extends JpaRepository<Note, Integer> {
 
     List<Note> findNoteByUser(@Param("username") String username);
 
@@ -27,4 +28,5 @@ public interface NoteRepository extends CrudRepository<Note, Integer> {
     @Modifying
     @Query("Update Note t SET t.noteContent=:content WHERE t.id=:id")
     void updatenoteContent(@Param("id") int id, @Param("content") String content);
+
 }
